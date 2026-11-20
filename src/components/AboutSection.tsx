@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, Volume2, VolumeX, Maximize2, Loader2, RotateCcw } from 'lucide-react';
+import { Play, Pause, Volume2, VolumeX, Maximize2, Loader2, RotateCcw, Copy, Check } from 'lucide-react';
 import FadeIn from './FadeIn.tsx';
 import AnimatedText from './AnimatedText.tsx';
 import ContactButton from './ContactButton.tsx';
+import { CA_ADDRESS } from '../constants/token.ts';
 
 interface AboutSectionProps {
   onOpenContact?: () => void;
@@ -14,10 +15,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
   const [isMuted, setIsMuted] = useState(false);
   const [isBuffering, setIsBuffering] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState('0:00');
   const [totalDuration, setTotalDuration] = useState('2:15');
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleCopyCA = () => {
+    navigator.clipboard.writeText(CA_ADDRESS);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   const formatTime = (t: number) => {
     const mins = Math.floor(t / 60);
@@ -309,9 +317,26 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenContact }) => 
         </div>
 
         {/* Gap between text block and button */}
-        <div className="mt-12 sm:mt-16 md:mt-20">
+        <div className="mt-12 sm:mt-16 md:mt-20 flex flex-col items-center gap-5">
           <FadeIn delay={0.2} y={20}>
             <ContactButton onClick={onOpenContact} label="Ape In $NUUTS" />
+          </FadeIn>
+
+          <FadeIn delay={0.25} y={16}>
+            <button
+              type="button"
+              onClick={handleCopyCA}
+              className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#D7E2EA] transition-colors cursor-pointer max-w-full"
+              title="Copy Contract Address"
+            >
+              <span className="text-[#BBCCD7] font-semibold uppercase tracking-wider shrink-0">CA:</span>
+              <span className="truncate max-w-[210px] sm:max-w-none">{CA_ADDRESS}</span>
+              {isCopied ? (
+                <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              ) : (
+                <Copy className="w-3.5 h-3.5 text-[#D7E2EA]/60 shrink-0" />
+              )}
+            </button>
           </FadeIn>
         </div>
       </div>

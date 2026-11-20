@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, CheckCircle, Sparkles, ExternalLink } from 'lucide-react';
+import { X, Send, CheckCircle, Sparkles, ExternalLink, Copy, Check, Zap } from 'lucide-react';
+import { CA_ADDRESS, PUMP_FUN_URL, DEXSCREENER_URL, X_URL } from '../constants/token.ts';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
   const [contactInfo, setContactInfo] = useState('');
   const [inquiryType, setInquiryType] = useState('Whale Buy & Trench Raid');
   const [message, setMessage] = useState('');
+  const [isCopied, setIsCopied] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -24,6 +26,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(CA_ADDRESS);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -108,10 +116,33 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   </p>
                 </div>
 
+                {/* Contract Address Box with 1-Click Copy */}
+                <div className="bg-[#181818] border border-white/10 rounded-2xl p-3 mb-5">
+                  <div className="flex items-center justify-between text-xs text-[#D7E2EA]/60 uppercase tracking-widest font-medium mb-1.5">
+                    <span className="flex items-center gap-1">
+                      <Zap className="w-3 h-3 text-amber-400" /> Contract Address (CA)
+                    </span>
+                    {isCopied && <span className="text-emerald-400 text-[10px] font-mono">Copied to clipboard!</span>}
+                  </div>
+                  <div className="flex items-center justify-between gap-2 bg-[#0C0C0C] px-3 py-2 rounded-xl border border-white/5">
+                    <span className="text-xs font-mono text-[#D7E2EA] truncate selection:bg-white selection:text-black">
+                      {CA_ADDRESS}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={copyToClipboard}
+                      className="shrink-0 p-1.5 hover:bg-white/10 rounded-lg text-[#BBCCD7] hover:text-white transition-colors cursor-pointer"
+                      title="Copy Contract Address"
+                    >
+                      {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+
                 {/* Quick Degen Links */}
                 <div className="grid grid-cols-3 gap-2.5 mb-5">
                   <a
-                    href="https://pump.fun"
+                    href={PUMP_FUN_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#1c2228] hover:bg-[#25303a] text-xs uppercase tracking-wider font-medium text-emerald-400 border border-emerald-500/20 transition-all text-center"
@@ -119,7 +150,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                     Pump.fun <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                   <a
-                    href="https://dexscreener.com/solana"
+                    href={DEXSCREENER_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#1c2228] hover:bg-[#25303a] text-xs uppercase tracking-wider font-medium text-cyan-300 border border-cyan-500/20 transition-all text-center"
@@ -127,7 +158,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                     DexScreener <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                   <a
-                    href="https://x.com/deeznuts___sol"
+                    href={X_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#1c2228] hover:bg-[#25303a] text-xs uppercase tracking-wider font-medium text-[#D7E2EA] border border-white/15 transition-all text-center"

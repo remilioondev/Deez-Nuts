@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import ContactButton from './ContactButton.tsx';
 import LivingPortrait from './LivingPortrait.tsx';
+import { PUMP_FUN_URL } from '../constants/token.ts';
 
 interface HeroSectionProps {
   onOpenContact?: () => void;
@@ -40,7 +41,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact }) => {
           Videos
         </a>
         <a
-          href="https://pump.fun"
+          href={PUMP_FUN_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200"
@@ -81,7 +82,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <ContactButton href="https://pump.fun" label="Buy $NUUTS" />
+          <ContactButton href={PUMP_FUN_URL} label="Buy $NUUTS" />
         </motion.div>
       </div>
     </section>
