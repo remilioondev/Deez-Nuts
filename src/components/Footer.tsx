@@ -42,7 +42,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             DexScreener
           </a>
           <a
-            href="https://twitter.com"
+            href="https://x.com/deeznuts___sol"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-white transition-colors"
@@ -50,20 +50,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             X / Twitter
           </a>
           <a
-            href="https://t.me"
+            href="https://pump.fun"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white transition-colors"
-          >
-            Telegram
-          </a>
-          <button
-            type="button"
-            onClick={onOpenContact}
-            className="hover:text-white transition-colors cursor-pointer bg-transparent border-0 uppercase tracking-widest"
+            className="hover:text-emerald-400 transition-colors uppercase tracking-widest"
           >
             Buy $NUUTS
-          </button>
+          </a>
         </div>
 
         {/* Back to top button */}

@@ -39,13 +39,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact }) => {
         >
           Videos
         </a>
-        <button
-          type="button"
-          onClick={onOpenContact}
-          className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200 cursor-pointer bg-transparent border-0"
+        <a
+          href="https://pump.fun"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#D7E2EA] font-medium uppercase tracking-wider text-sm md:text-lg lg:text-[1.4rem] hover:opacity-70 transition-opacity duration-200"
         >
           Buy $NUUTS
-        </button>
+        </a>
       </motion.nav>
 
       {/* 2. Hero Heading: Massive h1 "Deez Nuts" */}
@@ -80,7 +81,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenContact }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <ContactButton onClick={onOpenContact} label="Buy $NUUTS" />
+          <ContactButton href="https://pump.fun" label="Buy $NUUTS" />
         </motion.div>
       </div>
     </section>

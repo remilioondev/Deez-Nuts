@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, CheckCircle, Sparkles, Copy, Check, ExternalLink, Zap } from 'lucide-react';
+import { X, Send, CheckCircle, Sparkles, ExternalLink } from 'lucide-react';
 
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const CA_ADDRESS = 'D1ckNuutS8x4k9PumpFunLegendaryTokenSoL2026';
-
 export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
   const [handle, setHandle] = useState('');
   const [contactInfo, setContactInfo] = useState('');
   const [inquiryType, setInquiryType] = useState('Whale Buy & Trench Raid');
   const [message, setMessage] = useState('');
-  const [isCopied, setIsCopied] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -27,12 +24,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
-
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(CA_ADDRESS);
-    setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000);
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -113,35 +104,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                     Ape In $NUUTS
                   </h3>
                   <p className="text-xs sm:text-sm text-[#D7E2EA]/60 mt-1">
-                    The oldest AI influencer breaking pump.fun. Zero taxes, 100% jeet-proof.
+                    The oldest AI influencer breaking pump.fun. Holder rewards, 100% jeet-proof.
                   </p>
                 </div>
 
-                {/* Contract Address Box with 1-Click Copy */}
-                <div className="bg-[#181818] border border-white/10 rounded-2xl p-3 mb-5">
-                  <div className="flex items-center justify-between text-xs text-[#D7E2EA]/60 uppercase tracking-widest font-medium mb-1.5">
-                    <span className="flex items-center gap-1">
-                      <Zap className="w-3 h-3 text-amber-400" /> Contract Address (CA)
-                    </span>
-                    {isCopied && <span className="text-emerald-400 text-[10px] font-mono">Copied to clipboard!</span>}
-                  </div>
-                  <div className="flex items-center justify-between gap-2 bg-[#0C0C0C] px-3 py-2 rounded-xl border border-white/5">
-                    <span className="text-xs font-mono text-[#D7E2EA] truncate selection:bg-white selection:text-black">
-                      {CA_ADDRESS}
-                    </span>
-                    <button
-                      type="button"
-                      onClick={copyToClipboard}
-                      className="shrink-0 p-1.5 hover:bg-white/10 rounded-lg text-[#BBCCD7] hover:text-white transition-colors cursor-pointer"
-                      title="Copy Contract Address"
-                    >
-                      {isCopied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                    </button>
-                  </div>
-                </div>
-
                 {/* Quick Degen Links */}
-                <div className="grid grid-cols-2 gap-2.5 mb-5">
+                <div className="grid grid-cols-3 gap-2.5 mb-5">
                   <a
                     href="https://pump.fun"
                     target="_blank"
@@ -157,6 +125,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                     className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#1c2228] hover:bg-[#25303a] text-xs uppercase tracking-wider font-medium text-cyan-300 border border-cyan-500/20 transition-all text-center"
                   >
                     DexScreener <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                  <a
+                    href="https://x.com/deeznuts___sol"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-[#1c2228] hover:bg-[#25303a] text-xs uppercase tracking-wider font-medium text-[#D7E2EA] border border-white/15 transition-all text-center"
+                  >
+                    X / Twitter <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
 
@@ -183,14 +159,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
 
                     <div>
                       <label className="block text-[11px] uppercase tracking-wider text-[#D7E2EA]/80 font-medium mb-1">
-                        Telegram / Email
+                        X / Email
                       </label>
                       <input
                         type="text"
                         required
                         value={contactInfo}
                         onChange={(e) => setContactInfo(e.target.value)}
-                        placeholder="t.me/yourtag or email"
+                        placeholder="@yourhandle or email"
                         className="w-full bg-[#181818] border border-white/10 rounded-xl px-3.5 py-2 text-xs text-[#D7E2EA] placeholder-[#D7E2EA]/30 focus:outline-none focus:border-[#BBCCD7] transition-colors"
                       />
                     </div>

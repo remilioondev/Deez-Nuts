@@ -10,15 +10,15 @@ interface ServiceItem {
 const SERVICES: ServiceItem[] = [
   {
     number: '01',
-    name: '0% Tax & Burned LP',
+    name: 'Holder Rewards & Burned LP',
     description:
-      'Clean contract, no dev dumps, zero team tokens, and 100% jeet-proof tokenomics engineered specifically for the trenches of Solana pump.fun.',
+      'Built-in holder rewards, zero dev dumps, no team tokens, and 100% jeet-proof tokenomics engineered specifically for the trenches of Solana pump.fun.',
   },
   {
     number: '02',
     name: 'Autonomous AI Shilling',
     description:
-      '24/7 neural meme generation, algorithmic shitposting, and high-frequency raid coordination across X and Telegram to keep the chart pumping.',
+      '24/7 neural meme generation, algorithmic shitposting, and high-frequency raid coordination across X to keep the chart pumping.',
   },
   {
     number: '03',
@@ -30,13 +30,7 @@ const SERVICES: ServiceItem[] = [
     number: '04',
     name: 'Bonding Curve Velocity',
     description:
-      'Engineered to conquer the pump.fun bonding curve at lightspeed and graduate directly into Raydium automated liquidity pool locking.',
-  },
-  {
-    number: '05',
-    name: 'Diamond Nuuts Vault',
-    description:
-      'Exclusive holder syndicate granting early access to Deez Nuts’ unhinged AI voice notes, meme template generator, and secret raid strategies.',
+      'Engineered to conquer the pump.fun bonding curve at lightspeed and graduate directly into PumpfunSwap automated liquidity pool locking.',
   },
 ];
 

@@ -62,7 +62,7 @@ export const VIDEOS: VideoItem[] = [
     duration: '0:08',
     videoUrl: '/assets/aistudio/vid_00015-audio_06f0944f.mp4',
     description:
-      'Full throttle through the tunnel chasing vertical green candles and Raydium graduation at lightspeed.',
+      'Full throttle through the tunnel chasing vertical green candles and PumpfunSwap graduation at lightspeed.',
   },
   {
     id: 'video-5',

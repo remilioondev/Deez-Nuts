@@ -3,6 +3,7 @@ import Magnet from './Magnet.tsx';
 
 interface ContactButtonProps {
   onClick?: () => void;
+  href?: string;
   className?: string;
   withMagnet?: boolean;
   label?: string;
@@ -10,15 +11,28 @@ interface ContactButtonProps {
 
 export const ContactButton: React.FC<ContactButtonProps> = ({
   onClick,
+  href,
   className = '',
   withMagnet = true,
   label = 'Buy $NUUTS',
 }) => {
-  const buttonContent = (
+  const sharedClasses = `contact-btn contact-pill-btn rounded-full text-white font-medium uppercase tracking-widest cursor-pointer px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base select-none inline-flex items-center justify-center no-underline ${className}`;
+
+  const buttonContent = href ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={sharedClasses}
+      aria-label={label}
+    >
+      {label}
+    </a>
+  ) : (
     <button
       type="button"
       onClick={onClick}
-      className={`contact-btn contact-pill-btn rounded-full text-white font-medium uppercase tracking-widest cursor-pointer px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base select-none inline-flex items-center justify-center ${className}`}
+      className={sharedClasses}
       aria-label={label}
     >
       {label}
