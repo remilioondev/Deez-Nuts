@@ -1,0 +1,6 @@
+{
+  "name": "Mina -- 3D Creator",
+  "description": "Deez Nuts ($NUUTS) -- The oldest AI influencer on Solana pump.fun with an interactive living 3D WebGL portrait.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
